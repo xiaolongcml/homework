@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业统计系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 首页 - 作业本列表 -->
+    <div id="homePage" class="page active">
+        <header>
+            <h1>作业统计系统</h1>
+            <div class="header-actions">
+                <button id="createBookBtn" class="btn-primary">新建作业本</button>
+                <button id="exportDataBtn" class="btn-secondary">导出数据</button>
+                <button id="importDataBtn" class="btn-secondary">导入数据</button>
+            </div>
+        </header>
+        
+        <div id="bookList" class="book-list">
+            <!-- 作业本列表将在这里动态生成 -->
+        </div>
+        
+        <!-- 新建作业本模态框 -->
+        <div id="createBookModal" class="modal">
+            <div class="modal-content">
+                <h3>新建作业本</h3>
+                <form id="createBookForm">
+                    <div class="form-group">
+                        <label for="bookName">作业本名称：</label>
+                        <input type="text" id="bookName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPages">总页数：</label>
+                        <input type="number" id="totalPages" min="1" max="200" required>
+                    </div>
+                    <div class="form-buttons">
+                    <button type="submit" class="btn-primary">创建</button>
+                    <button type="button" id="cancelCreateBtn" class="btn-secondary">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 导入数据模态框 -->
+    <div id="importDataModal" class="modal">
+        <div class="modal-content">
+            <h3>导入数据</h3>
+            <div class="import-info">
+                <p>请选择之前导出的JSON文件：</p>
+                <input type="file" id="importFile" accept=".json" style="margin: 15px 0;">
+                <p class="warning">注意：导入数据将覆盖当前所有数据！</p>
+            </div>
+            <div class="form-buttons">
+                <button id="confirmImportBtn" class="btn-primary">确认导入</button>
+                <button id="cancelImportBtn" class="btn-secondary">取消</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- 作业本详情页 -->
+    <div id="bookDetailPage" class="page">
+        <header>
+            <button id="backBtn" class="btn-back">← 返回</button>
+            <h2 id="bookTitle">作业本详情</h2>
+            <button id="editModeBtn" class="btn-edit">编辑</button>
+        </header>
+        
+        <div class="progress-info">
+            <div class="progress-text">
+                <span id="remainingPages">0</span> 页未完成
+            </div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+        </div>
+        
+        <div class="pages-grid-container">
+            <div id="pagesGrid" class="pages-grid">
+                <!-- 页面网格将在这里动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 编辑页面状态模态框 -->
+        <div id="editPageModal" class="modal">
+            <div class="modal-content">
+                <h3>编辑页面状态</h3>
+                <div class="page-info">
+                    <span>第 <span id="editPageNumber">0</span> 页</span>
+                </div>
+                <div class="status-options">
+                    <button class="status-btn completed" data-status="completed">已完成</button>
+                    <button class="status-btn not-started" data-status="not-started">未开始</button>
+                </div>
+                <div class="form-buttons">
+                    <button id="savePageStatusBtn" class="btn-primary">保存</button>
+                    <button id="cancelEditBtn" class="btn-secondary">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
