@@ -1,0 +1,8 @@
+# Pages部署配置
+[pages]
+# 静态资源目录（你的index.html等文件都在根目录，填"./"）
+dir = "./"
+# 构建命令（无构建步骤则留空）
+build_command = ""
+# 构建输出目录（根目录无需构建，填"./"）
+destination_dir = "./"
